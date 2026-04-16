@@ -45,6 +45,6 @@ class TestBurger:
         burger.bun = mock_bun
         burger.ingredients = [mock_ingredient]
         receipt = burger.get_receipt()
-        assert '(==== Burger Bun ====)' in receipt
-        assert '= sauce Ingredient Sauce =' in receipt
-        assert 'Price: 120' in receipt
+        assert f'(==== {mock_bun.get_name.return_value} ====)' in receipt
+        assert f'= sauce {mock_ingredient.get_name.return_value} =' in receipt
+        assert f'Price: {mock_bun.get_price.return_value * 2 + mock_ingredient.get_price.return_value}' in receipt
